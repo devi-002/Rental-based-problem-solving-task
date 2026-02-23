@@ -2,37 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech task</title>
+    <title>tech task</title>
     <link rel="stylesheet" href="tech.css">
 </head>
 <body>
-    
-    <div class="box">
-       <center> <h3>Rent caluclation </h3></center>
-    <label for="" >Item quantity:</label>
-    <input type="number" id="quantity"> <br> <br>
-    <label for="">Rent per item per day:</label>
-    <input type="number" id="rent" ><br><br>
-    <label for="">Number of days:</label>
+
+<div class="box">
+    <center><h3>Rental Calculation</h3></center>
+
+    <label>Material Type:</label>
+    <select id="material" onchange="setRent()">
+        <option value="">-- Select Material --</option>
+        <option value="sheet">Sheet</option>
+        <option value="pipe">Pipe</option>
+        <option value="column">Column Box</option>
+    </select><br><br>
+
+    <label>Item Quantity:</label>
+    <input type="number" id="quantity"><br><br>
+
+    <label>Rent per item per day:</label>
+    <input type="number" id="rent" readonly><br><br>
+
+    <label>Number of days:</label>
     <input type="number" id="days"><br><br>
-    <label for="">Damaged items</label>
+
+    <label>Damaged items:</label>
     <input type="number" id="items"><br><br>
-    <label for="">Damaged charge per item:</label>
-    <input type="number" id="damaged"><br><br>
-    <label for="">Advance amount paid:</label>
+
+    <label>Advance amount paid:</label>
     <input type="number" id="advanced"><br><br>
-    <button onclick="totalrent()">totalrent</button>
-    <div  class="result" id="result"></div><br>
-    <button onclick="damagedcost()">damagedcost</button>
-    <div class="result" id="damagedcost"></div><br>
-    <button onclick="finalamount()">final</button>
-    <div class="result" id="final"></div><br>
-    <button onclick="balance()">balance</button>
-    <div class="result" id="balance"></div><br>
 
-    <script src="tech.js"></script>
+    <!-- ONE BUTTON -->
+    <button onclick="calculate()">Calculate</button><br><br>
 
-    </div>
+    <label>Total Rent:</label>
+    <input type="text" id="totalrent" readonly><br><br>
+
+    <label>Damage Cost:</label>
+    <input type="text" id="damagecost" readonly><br><br>
+
+    <label>Final Amount:</label>
+    <input type="text" id="finalamount" readonly><br><br>
+
+    <label>Balance:</label>
+    <input type="text" id="balance" readonly><br><br>
+</div>
+
+<script src="tech.js"></script>
 </body>
 </html>

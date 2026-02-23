@@ -1,54 +1,29 @@
-let totalrent1;
-function totalrent(){
-    const number1=document.getElementById("quantity").value
-     const number2=document.getElementById("rent").value
-      const number3=document.getElementById("days").value
-       
-       totalrent1=number1*number2*number3
-    
-       if (!isNaN (totalrent1)){
-        document.getElementById("result").innerHTML=totalrent1
-        return totalrent1
-       }
-       else {
-        document.getElementById("result").innerHTML="invalid input"
+const DAMAGE_CHARGE = 200; 
 
-       }
+function setRent() {
+    let material = document.getElementById("material").value;
+    let rent = 0;
+
+    if (material === "sheet") rent = 100;
+    else if (material === "pipe") rent = 150;
+    else if (material === "column") rent = 200;
+
+    document.getElementById("rent").value = rent;
 }
 
-function damagedcost(){
-    const number4=document.getElementById("damaged").value
-    const number5=document.getElementById("items").value
-    let damagecost=number4*number5
-    if(!isNaN(damagecost)){
-        document.getElementById("damagedcost").innerHTML=damagecost
-        return damagecost
-    }
-    else{
-        document.getElementById("damagedcost").innerHTML="invalid input"
-    }
-}
-function finalamount(){
-    const rent=totalrent()
-    const damage=damagedcost()
-    const finalamt=rent+damage
-    if(!isNaN(finalamt)){
-        document.getElementById("final").innerHTML=finalamt
-        return finalamt
-    }
-    else{
-        document.getElementById("final").innerHTML="invalid input"
-    }
+function calculate() {
 
-}
-function balance(){
-    const final=finalamount();
-    const number6=document.getElementById("advanced").value
-    const balance=final-number6
-    if(!isNaN(balance)){
-        document.getElementById("balance").innerHTML=balance
-    }
-    else{
-        document.getElementById("balance").innerHTML="invalid input"
-    }
+    let quantity = Number(document.getElementById("quantity").value) || 0;
+    let rent = Number(document.getElementById("rent").value) || 0;
+    let days = Number(document.getElementById("days").value) || 0;
+    let damagedItems = Number(document.getElementById("items").value) || 0;
+    let advance = Number(document.getElementById("advanced").value) || 0;
+    let totalRent = quantity * rent * days;
+    let damageCost = damagedItems * DAMAGE_CHARGE;
+    let finalAmount = totalRent + damageCost;
+    let balance = finalAmount - advance;
+    document.getElementById("totalrent").value = totalRent;
+    document.getElementById("damagecost").value = damageCost;
+    document.getElementById("finalamount").value = finalAmount;
+    document.getElementById("balance").value = balance;
 }
